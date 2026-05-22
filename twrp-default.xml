@@ -111,6 +111,15 @@
     <project name="android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" groups="pdk,linux,arm" clone-depth="1" remote="LineageOS" revision="lineage-19.1" />
     <project name="android_prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9" path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" groups="pdk,linux,x86" clone-depth="1" remote="LineageOS" revision="lineage-19.1" />
 
+    <!-- Remove x86_64-hosted Clang prebuilt — won't run on arm64 host -->
+    <remove-project name="platform/prebuilts/clang/host/linux-x86" />
+
+    <!-- Remove the LineageOS GCC prebuilts added by twrp-default.xml
+         (these are x86_64-hosted cross-compilers, can't run on arm64) -->
+    <remove-project name="android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9" />
+    <remove-project name="android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9" />
+    <remove-project name="android_prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9" />
+
     <!-- LAST: Remove unused projects for minimal manifest -->
     <include name="remove-minimal.xml"/>
 </manifest>
